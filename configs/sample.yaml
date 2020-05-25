@@ -1,0 +1,63 @@
+MODEL:
+  PRETRAIN_PATH: '/mnt/lustre/liuyuan1/cvpr20/network/MT-Net/logs/mt/market/stage5/v4/resnet50_model_400.pth'
+  METRIC_LOSS_TYPE: 'triplet'
+  IF_LABELSMOOTH: 'on'
+  #PRETRAIN_CHOICE: 'self'
+mt:
+  nopretrain: False
+  num_features: 2048
+  last_conv_stride: 1
+  num_classes_seg: 8
+  dropout: 0.0
+  # branch:
+  weight: [1,2,1,1,0.0125,1,0,0] #the last one is for div loss
+  global_branch: True
+  mask_branch: 'part_torso_21' #'dim_red_part_torso_21'
+  part_branch: True #triplet
+  mask_dim: 1024
+  part_dim: 2048
+  part_info: 2 
+  attr_mask_weight: 0.2
+  triplet_margin: 0.5
+  attr_wavp: False
+INPUT:
+  SIZE_TRAIN: [384, 192]
+  SIZE_TEST: [384, 192]
+  PROB: 0.5 # random horizontal flip
+  RE_PROB: 0.5 # random erasing
+  PADDING: 10
+
+DATASETS:
+  NAMES: ('market1501')
+
+DATALOADER:
+  SAMPLER: 'softmax_triplet'
+  NUM_WORKERS: 8
+  NUM_INSTANCE: 4
+
+SOLVER:
+  OPTIMIZER_NAME: 'Adam'
+  MAX_EPOCHS: 400
+  BASE_LR: 0.00035
+  BIAS_LR_FACTOR: 1
+  WEIGHT_DECAY: 0.0005
+  WEIGHT_DECAY_BIAS: 0.0005
+  IMS_PER_BATCH: 64
+
+  STEPS: [40, 70]
+  GAMMA: 0.1
+
+  WARMUP_FACTOR: 0.01
+  WARMUP_ITERS: 10
+  WARMUP_METHOD: 'linear'
+
+  CHECKPOINT_PERIOD: 20
+  LOG_PERIOD: 20
+  EVAL_PERIOD: 20
+
+TEST:
+  IMS_PER_BATCH: 128
+
+OUTPUT_DIR: "logs/mt/market/stage5/v5-dz" #this version use same id for part triplet
+
+
