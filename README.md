@@ -16,6 +16,8 @@
 | **+ All Modules** | 82.4(79.6) | 90.0(80.7)    |
 | **+ Reranking**   | 87.3(89.1) | 91.8(90.6)    |
 
+refer to our paper for more experiments comparision.
+
 <!-- [model(Market1501)](https://drive.google.com/open?id=1hn0sXLZ5yJcxtmuY-ItQfYD7hBtHwt7A)
 
 [model(DukeMTMC-reID)](https://drive.google.com/open?id=1LARvQe-gUbflbanidUM0keKmHoKTpLUj) -->
