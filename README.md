@@ -65,7 +65,9 @@ refer to our paper for more experiments comparision.
 ## Train
 You can run these commands in  `.sh ` files for training different datasets of differernt loss.  You can also directly run code `sh *.sh` to run our demo after your custom modification.
 
-<!-- 1. Market1501, cross entropy loss + triplet loss
+```
+
+1. Market1501, cross entropy loss + triplet loss
 
 ```bash
 python3 tools/train.py --config_file='configs/softmax_triplet.yml' MODEL.DEVICE_ID "('your device id')" DATASETS.NAMES "('market1501')" OUTPUT_DIR "('your path to save checkpoints and logs')"
@@ -73,7 +75,13 @@ python3 tools/train.py --config_file='configs/softmax_triplet.yml' MODEL.DEVICE_
 
 2. DukeMTMC-reID, cross entropy loss + triplet loss + center loss
 
-
 ```bash
 python3 tools/train.py --config_file='configs/softmax_triplet_with_center.yml' MODEL.DEVICE_ID "('your device id')" DATASETS.NAMES "('dukemtmc')" OUTPUT_DIR "('your path to save checkpoints and logs')"
-``` -->
+``` 
+
+# Cite our paper if you are interested
+```
+@article{lanmagnifiernet,
+  title={MagnifierNet: Towards Semantic Adversary and Fusion for Person Re-identification},
+  author={Lan, Yushi and Liu, Yuan and Zhou, Xinchi and Tian, Maoqing and Zhang, Xuesen and Yi, Shuai and Li, Hongsheng}
+}
